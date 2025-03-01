@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>For My Bilge 💝</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;800&family=Short+Stack&display=swap" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: #ffe6f2;
+            overflow: hidden;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .kawaii-border {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: repeating-linear-gradient(
+                45deg,
+                transparent,
+                transparent 10px,
+                #ff69b4 10px,
+                #ff69b4 20px
+            );
+            animation: slide 20s linear infinite;
+            z-index: -1;
+        }
+
+        .container {
+            text-align: center;
+            padding: 2.5rem;
+            background: white;
+            border-radius: 30px;
+            box-shadow: 0 10px 30px rgba(255,105,180,0.3);
+            position: relative;
+            transform: scale(0.95);
+            animation: float 3s ease-in-out infinite;
+            border: 4px solid #ff69b4;
+        }
+
+        h1 {
+            color: #ff1493;
+            font-size: 3rem;
+            margin: 0 0 1rem;
+            text-shadow: 2px 2px 0px white;
+            animation: bounce 1.5s ease infinite;
+            font-family: 'Short Stack', cursive;
+        }
+
+        .hearts {
+            font-size: 2.5rem;
+            margin: 1.5rem 0;
+            animation: spin 2s linear infinite;
+        }
+
+        .message {
+            font-size: 1.4rem;
+            color: #ff69b4;
+            margin: 1.5rem 0;
+            padding: 15px;
+            background: #fff0f6;
+            border-radius: 15px;
+            transform: rotate(-1deg);
+            display: inline-block;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            font-weight: 600;
+        }
+
+        .message:hover {
+            transform: rotate(1deg) scale(1.05);
+            background: #ffe6f2;
+        }
+
+        button {
+            background: #ff69b4;
+            color: white;
+            border: none;
+            padding: 15px 35px;
+            border-radius: 30px;
+            font-size: 1.3rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 2rem;
+            font-family: 'Short Stack', cursive;
+            letter-spacing: 2px;
+            box-shadow: 0 5px 15px rgba(255,105,180,0.3);
+        }
+
+        button:hover {
+            transform: scale(1.1) rotate(2deg);
+            background: #ff1493;
+            box-shadow: 0 8px 25px rgba(255,20,147,0.4);
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0) scale(0.95); }
+            50% { transform: translateY(-20px) scale(1); }
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        @keyframes slide {
+            0% { background-position: 0 0; }
+            100% { background-position: 1000px 0; }
+        }
+
+        .sparkles {
+            position: fixed;
+            pointer-events: none;
+            width: 100%;
+            height: 100%;
+        }
+
+        .sparkle {
+            position: absolute;
+            animation: sparkle 1s ease-out;
+            font-size: 24px;
+        }
+
+        @keyframes sparkle {
+            0% { opacity: 1; transform: scale(1); }
+            100% { opacity: 0; transform: scale(3); }
+        }
+
+        .hello-kitty {
+            position: absolute;
+            font-size: 4rem;
+            animation: walk 6s linear infinite;
+        }
+
+        @keyframes walk {
+            0% { left: -100px; }
+            100% { left: 100%; }
+        }
+    </style>
+</head>
+<body>
+    <div class="kawaii-border"></div>
+    <div class="sparkles" id="sparkles"></div>
+    <div class="container">
+        <h1>🌸 I'm Sorry Bilge! 🌸</h1>
+        <div class="hearts">💞🎀💞</div>
+        <p class="message">I'm sorry for hurting you. </p>
+        <p class="message">I'm so stupid sometimes, or most of the times.</p>
+        <p class="message">You mean the world to me.</p>
+        <h1 style="margin-top: 1.5rem;">I LOVE YOU SO MUCH 💖</h1>
+        <button onclick="createSparkles()">Click here if you forgive me</button>
+    </div>
+
+    <script>
+        function createSparkles() {
+            for(let i = 0; i < 30; i++) {
+                const sparkle = document.createElement('div');
+                sparkle.className = 'sparkle';
+                sparkle.style.left = Math.random() * 100 + '%';
+                sparkle.style.top = Math.random() * 100 + '%';
+                sparkle.innerHTML = ['✨','🌟','💫','🎀','🌸'][Math.floor(Math.random()*5)];
+                document.getElementById('sparkles').appendChild(sparkle);
+                
+                setTimeout(() => sparkle.remove(), 1000);
+            }
+        }
+
+        // Add walking Hello Kitties
+        setInterval(() => {
+            const kitty = document.createElement('div');
+            kitty.className = 'hello-kitty';
+            kitty.innerHTML = '🐾';
+            kitty.style.top = Math.random() * 80 + 10 + '%';
+            document.body.appendChild(kitty);
+            
+            setTimeout(() => kitty.remove(), 6000);
+        }, 3000);
+    </script>
+</body>
+</html>
